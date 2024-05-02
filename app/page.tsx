@@ -2,8 +2,16 @@ import { CustomButton } from "../components/Button";
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
 import Image from "next/image";
+import { createClient } from "../utils/supabase/server";
+import { redirect } from "next/navigation";
 
-export default function Home() {
+export default async function Home() {
+  const btnStyle = 'bg-primary hover:bg-blue-600 p-2 text-center w-full rounded text-white mt-2'
+  const supabase = await createClient()
+  const { data: {user} } = await supabase.auth.getUser()
+  if(user){
+    return redirect('/dashboard')
+  }
   return (
   <div className="bg-secondary w-full min-h-screen">
     <Header />

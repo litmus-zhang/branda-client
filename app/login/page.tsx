@@ -3,6 +3,7 @@ import { Footer } from '../../components/Footer'
 import { Header } from '../../components/Header'
 import { emailLogin, signup } from './actions'
 import { createClient } from '../../utils/supabase/server'
+import { OAuthButtons } from './oauth-signin'
 
 export default async function LoginPage({
   searchParams,
@@ -35,6 +36,7 @@ export default async function LoginPage({
       <p>
         Don&apos;t have an account? <button className='text-primary underline' formAction={signup}>Sign up</button>
       </p>
+      <OAuthButtons/>
     </form>
     <Footer/>
     </div>

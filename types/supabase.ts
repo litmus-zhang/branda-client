@@ -12,7 +12,7 @@ export type Database = {
       brand: {
         Row: {
           color_pallete: Json | null
-          createdBy: number | null
+          createdby: string | null
           id: number
           illustration: Json | null
           logo: string | null
@@ -23,8 +23,8 @@ export type Database = {
         }
         Insert: {
           color_pallete?: Json | null
-          createdBy?: number | null
-          id: number
+          createdby?: string | null
+          id?: never
           illustration?: Json | null
           logo?: string | null
           name?: string | null
@@ -34,8 +34,8 @@ export type Database = {
         }
         Update: {
           color_pallete?: Json | null
-          createdBy?: number | null
-          id?: number
+          createdby?: string | null
+          id?: never
           illustration?: Json | null
           logo?: string | null
           name?: string | null
@@ -45,11 +45,11 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: "brand_createdBy_fkey"
-            columns: ["createdBy"]
+            foreignKeyName: "brand_createdby_fkey"
+            columns: ["createdby"]
             isOneToOne: false
             referencedRelation: "user"
-            referencedColumns: ["id"]
+            referencedColumns: ["user_id"]
           },
         ]
       }
@@ -57,24 +57,27 @@ export type Database = {
         Row: {
           brand: number | null
           country: string | null
-          createdBy: number | null
+          createdby: string | null
           description: string | null
+          id: number
           niche: string | null
           target_market: string | null
         }
         Insert: {
           brand?: number | null
           country?: string | null
-          createdBy?: number | null
+          createdby?: string | null
           description?: string | null
+          id?: never
           niche?: string | null
           target_market?: string | null
         }
         Update: {
           brand?: number | null
           country?: string | null
-          createdBy?: number | null
+          createdby?: string | null
           description?: string | null
+          id?: never
           niche?: string | null
           target_market?: string | null
         }
@@ -87,11 +90,11 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
-            foreignKeyName: "business_details_createdBy_fkey"
-            columns: ["createdBy"]
+            foreignKeyName: "business_details_createdby_fkey"
+            columns: ["createdby"]
             isOneToOne: false
             referencedRelation: "user"
-            referencedColumns: ["id"]
+            referencedColumns: ["user_id"]
           },
         ]
       }
@@ -101,24 +104,24 @@ export type Database = {
           firstname: string | null
           id: number
           lastname: string | null
-          oauth_id: string | null
           profile_pic: string | null
+          user_id: string | null
         }
         Insert: {
           email?: string | null
           firstname?: string | null
-          id: number
+          id?: never
           lastname?: string | null
-          oauth_id?: string | null
           profile_pic?: string | null
+          user_id?: string | null
         }
         Update: {
           email?: string | null
           firstname?: string | null
-          id?: number
+          id?: never
           lastname?: string | null
-          oauth_id?: string | null
           profile_pic?: string | null
+          user_id?: string | null
         }
         Relationships: []
       }

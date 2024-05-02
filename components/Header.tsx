@@ -9,7 +9,11 @@ export const Header = async () => {
 return (
     <div className="">
     <header className="p-4 mx-10 flex justify-between items-center">
-        <div className="text-black text-xl font-bold">Branda</div>
+        <div className="text-black text-xl font-bold">
+            <Link href={'/'}>
+            Branda
+        </Link>
+            </div>
         <nav className="flex gap-3 items-center">
         <a href="#" className="">Services</a>
         <a href="#" className="">About Us</a>
@@ -19,9 +23,9 @@ return (
         user ? <form action={signOut} className="flex items-center gap-2">
             <p>{user.email?.slice(0,2)}***{user.email?.slice(-9)}</p>
             <CustomButton type="submit" text="Logout" />
-        </form> : <>
-        <Link href='/login'>
-        Get Started</Link></>
+        </form> : <button>
+        <Link className="bg-primary text-sm p-2 text-white rounded cur" href='/login'>
+        Get Started</Link></button>
     }
         </div>
         </nav>

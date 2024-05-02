@@ -4,6 +4,8 @@ import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
 import { createClient } from '../../utils/supabase/server'
+import { Provider } from '@supabase/supabase-js'
+import { getURL } from '../../utils/helpers'
 
 export async function emailLogin(formData: FormData) {
   const supabase = createClient()
@@ -49,4 +51,20 @@ export async function signOut() {
   const supabase = createClient()
   await supabase.auth.signOut()
   redirect('/login')
+}
+
+export async function OAuthSignin(provider: Provider) {
+  if(!provider) {
+    return redirect('/login?message=Error signing in with OAuth provider')
+  }
+  const supabase = await createClient()
+  const redirectUrl = getURL('/auth/callback')
+  const { data, error } = await supabase.auth.signInWithOAuth({ provider, options: {
+    redirectTo: redirectUrl
+  }  })
+  if(error) {
+    return redirect('/login?message=Error signing in with OAuth provider')
+  }
+  return redirect(data.url)
+
 }

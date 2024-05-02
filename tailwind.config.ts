@@ -17,7 +17,8 @@ const config: Config = {
         "primary": '#5D5FEF',
         "secondary":  '#E4F0F4',
         gray:{
-          '1': '#D9D9D9'
+          '1': '#D9D9D9',
+          '2': "#F5F5F5",
         }
 
       }
