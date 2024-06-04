@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 export const RootLayoutStyles = styled.main`
-    border: 2px solid #000;
-`
+  background: #e4f0f4;
+  padding-top: 1.5rem;
+`;
 export const DashboardRootStyles = styled.main`
-    border: 2px solid #000;
-`
+  padding-top: 1.5rem;
+`;
