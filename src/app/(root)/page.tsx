@@ -1,10 +1,9 @@
-import Image from "next/image";
+"use client";
 import styles from "./page.module.css";
+import { Hero } from "@/components/hero/hero";
 
 export default function Home() {
   return (
-    <main>
-      I am Homepage
-    </main>
+    <Hero />
   );
 }

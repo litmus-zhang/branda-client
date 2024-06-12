@@ -1,12 +1,13 @@
 "use client" ;
-import { RootLayoutStyles } from "./style";
+import { Footer } from "../footer/footer";
+import { RootHeader } from "../header/header";
 
 export const HomeLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <RootLayoutStyles>
-      <div className="header">Header</div>
+    <>
+      <RootHeader />
         {children}
-      <div className="footer">Footer</div>
-    </RootLayoutStyles>
+      <Footer />
+    </>
   );
 };

@@ -1,8 +1,48 @@
-:root{
 
-}
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+}
+button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+textarea{
+  outline: none;
+  border: none;
+}
+body {
+  height: 100vh;
+}
+html,
+body {
+  width: 100vw;
+  overflow-x: hidden;
+}
+.links {
+  p {
+    position: relative;
+    display: inline-block;
+  }
+  p::after {
+    content: "";
+    position: absolute;
+    bottom: -5px; /* Adjust this value to control the space under the text */
+    left: 0;
+    width: 100%;
+    height: 2px; /* Adjust this value to control the thickness of the line */
+    background-color: #0e0d0d; /* Adjust this value to set the color of the line */
+    transform: scaleX(0); /* Initially, the line is invisible */
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+  }
+  p:hover::after {
+    transform: scaleX(1); /* When hovered, the line becomes visible */
+    transform-origin: bottom left;
+  }
 }
