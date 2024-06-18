@@ -10,4 +10,12 @@ export const Niches: INiche[] = [
   { name: "Retail", isSelected: false },
   { name: "Agriculture", isSelected: false },
 ];
+export const Countries: INiche[] = [
+  { name: "Nigeria", isSelected: false },
+  { name: "Kenya", isSelected: false },
+  { name: "USA", isSelected: false },
+  { name: "South Africa", isSelected: false },
+  { name: "Rwanda", isSelected: false },
+  { name: "Canada", isSelected: false },
+];
 

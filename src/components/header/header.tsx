@@ -41,7 +41,7 @@ export const DashboardHeader = () => {
   return (
     <HeaderStyle>
       <div className="logo">
-        <Link href="/">
+        <Link href="/dashboard">
           {" "}
           <Logo />
         </Link>

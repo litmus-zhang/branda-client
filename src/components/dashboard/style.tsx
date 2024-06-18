@@ -1,252 +1,235 @@
-import styled, { css } from "styled-components";
-import { ISelectedcompStyle } from "../icons/dashboard";
-import { motion } from "framer-motion";
-import { upVariant } from "@/animations/animations";
+import styled from "styled-components";
 
-export const DashboardStyle = styled.main`
-  padding: 0rem 4.5rem 0rem 4.5rem;
+export const HomeStyles = styled.div`
   margin-top: 5%;
+  padding: 0rem 4.5rem 0rem 4.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    h3 {
+      color: #000;
+      font-size: 1.5rem;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+    .other {
+      display: flex;
+      align-items: center;
+      gap: 1.12rem;
+      button {
+        background: transparent;
+        display: flex;
+        align-items: center;
+        height: 40px;
+        min-width: 120px;
+        padding: 0.625rem;
+        padding: 0rem 1rem 0rem 1rem;
+        gap: 0.5rem;
+        border: 1px solid #5d5fef;
+        p {
+          color: var(--Iris-100, #5d5fef);
+          font-size: 1rem;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+        }
+      }
+    }
+  }
+  .inp {
+    position: relative;
+    input {
+      height: 40px;
+      padding: 0.625rem;
+      background: #f5f5f5;
+    }
+    .abs {
+      position: absolute;
+      top: 100%;
+      margin-top: 0.25rem;
+      p {
+        color: var(--Error-500, #cb1a14);
+        font-size: 0.75rem;
+      }
+    }
+  }
+  .all-brands {
+    display: flex;
+    gap: 0.625rem;
+    flex-wrap: wrap;
+  }
+  @media (max-width: 500px) {
+    .all-brands {
+      flex-direction: column;
+    }
+  }
+  @media (min-width: 500px) {
+    .all-brands {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr));
+      gap: 0.75rem;
+    }
+  }
+  @media (min-width: 998px) {
+    .all-brands {
+      grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
+    }
+  }
+`;
+
+export const BrandItemStyles = styled.div`
+  cursor: pointer;
+  border-radius: 0.625rem;
+  .img {
+    width: 100%;
+    // border-bottom: 1px solid #000;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  .text {
+    padding: 0.625rem;
+    border: 1px solid #000;
+    border-radius: 0rem 0rem 0.625rem 0.625rem;
+  }
+`;
+
+export const AbsoluteContStyle = styled.div`
+  position: fixed;
+  transition: 0.4s;
+  left: 50%;
+  top: 50%;
+  height: 100vh;
+  width: 100vw;
+  margin-left: -50vw;
+  margin-top: -50vh;
+  z-index: 20;
+  background: rgba(163, 163, 163, 0.75);
+`;
+
+export const FlexAbsoluteModalStyles = styled(AbsoluteContStyle)`
   display: flex;
   justify-content: center;
   align-items: center;
-  .cont {
-    width: 45%;
-    min-height: 60vh;
-    display: flex;
-    align-items: stretch;
-  }
-  @media (max-width: 998px) {
-    .cont {
-      width: 70%;
-    }
-  }
-  @media (max-width: 500px) {
-    .cont {
-      width: 95%;
-    }
-  }
 `;
 
-export const FirstFormStyle = styled.div`
-  padding: 2.5rem 2.5rem 2.5rem 2.5rem;
-  border-radius: 0.625rem;
-  border: 1px solid #000;
-  background: #fff;
-  width: 100%;
-  flex: 1;
-  h3 {
-    color: #000;
-    font-size: 1.35rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-  }
-  .form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.88rem;
-    margin-top: 1.25rem;
-  }
-  .form-ele {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-  .aud {
-    textarea {
-      height: 5rem;
-      padding: 0.625rem;
-      width: 100%;
-      background: #f5f5f5;
-    }
-  }
-  .desc {
-    textarea {
-      height: 6.375rem;
-      padding: 0.625rem;
-      width: 100%;
-      background: #f5f5f5;
-    }
-  }
-  .btn {
-    button {
-      background: #5d5fef;
-      height: 40px;
-      min-width: 120px;
-      padding: 0.625rem;
-      padding: 0rem 1rem 0rem 1rem;
-      color: #fff;
-      font-size: 1rem;
-      font-style: normal;
-      font-weight: 400;
-      line-height: normal;
-    }
-  }
-  label {
-    color: #000;
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-  }
-`;
-
-export const DropdownStyles = styled.div`
-  position: relative;
-  .head {
-    display: flex;
-    cursor: pointer;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    background: #f5f5f5;
-    padding: 0.625rem;
-    p {
-      color: #000;
-      font-size: 1rem;
-      font-style: normal;
-      font-weight: 400;
-      line-height: normal;
-    }
-  }
-  width: 100%;
-  .dropdown {
-    position: absolute;
-    width: 100%;
-    z-index: 5;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    height: 130px;
-    overflow-y: scroll;
-    border-radius: 0.3125rem;
-    border: 1px solid #e4e7ec;
-    background: #fff;
-    padding: 1rem 0.5rem 1rem 1rem;
-  }
-`;
-
-export const DropCompStyles = styled.div<ISelectedcompStyle>`
-  padding: 0.5rem;
-  cursor: pointer;
-  p {
-    color: #000;
-    font-size: 0.875rem;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 1.25rem; /* 142.857% */
-  }
-  &:hover {
-    border-radius: 0.125rem;
-    background: #5d5fef;
-    p {
-      color: var(--Neutrals-Colors-100, #fff);
-    }
-  }
-
-  ${(props) =>
-    props.$isSelected &&
-    css`
-      border-radius: 0.125rem;
-      background: #5d5fef;
-      p {
-        color: var(--Neutrals-Colors-100, #fff);
-      }
-    `}
-`;
-
-export const MultiStepFormStyle = styled.div`
-  padding: 2.5rem 2.5rem 2.5rem 2.5rem;
-  border: 1px solid #000;
-  border-radius: 0.625rem;
-  background: #f5f5f5;
-  width: 100%;
-  .stage-head {
-    display: flex;
-    overflow-x: scroll;
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
-`;
-
-export const StageStyle = styled.div<ISelectedcompStyle>`
+export const ModalStyle = styled.div`
   display: flex;
-  align-items: center;
-  .circle {
+  flex-direction: column;
+  gap: 2rem;
+  background: #fff;
+  max-width: 70%;
+  padding: 3rem 3rem 2rem 3rem;
+  .head {
+    h4 {
+      color: #000;
+      font-size: 1.8rem;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+  }
+  .two {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+  .details {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 30%;
+  }
+  .details-2 {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 70%;
+    overflow-x: scroll;
+    padding-bottom: 0.25rem;  
+    &::-webkit-scrollbar {
+      width: 0.25rem; /* width of the scrollbar */
+      background: #d9d9d9;
+      border-radius: 0.125rem;
+      height: 0.25rem;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #d9d9d9;
+      width: 0.25rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 0.25rem;
+      background: #5d5fef;
+    }
+  }
+  .img {
+    border-radius: 0.625rem;
+    border: 1px solid #d9d9d9;
+    background: #fff;
+    width: 16.3125rem;
+    height: 9.625rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 1.8125rem;
-    height: 1.8125rem;
-    padding: 0.625rem;
-    border-radius: 1.875rem;
-    background: #000;
-    transition: 0.25s;
-    p {
-      color: #f5f5f5;
-      font-size: 1.25rem;
-      font-style: normal;
-      font-weight: 700;
-      line-height: normal;
+  }
+  .deet,
+  .dt {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .deet {
+    h5 {
+      width: 100%;
+      white-space: wrap;
+      word-break: break-all;
     }
   }
-  .dash {
-    width: 2.5rem;
-    height: 0.1875rem;
-    background: #000;
-    transition: 0.25s;
-  }
-  ${(props) =>
-    props.$isSelected &&
-    css`
-      .circle,
-      .dash {
-        background: var(--Iris-100, #5d5fef);
-        transition: 0.25s;
-      }
-    `}
-`;
-
-export const VaryingStepStyle = styled(motion.div).attrs(() => ({
-  initial: "initial",
-  animate: "final",
-  exit: "exit",
-  variants: upVariant,
-}))`
-  margin-top: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  .top {
-    h3 {
-      color: #000;
-      font-size: 1.75rem;
-      font-style: normal;
-      font-weight: 700;
-      line-height: normal;
-    }
-    p {
-      color: #000;
+  .three {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    gap: 1rem;
+    .close {
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      min-width: 120px;
+      padding: 0.625rem;
+      padding: 0rem 1rem 0rem 1rem;
+      gap: 0.5rem;
+      border: 1px solid #5d5fef;
+      color: var(--Iris-100, #5d5fef);
       font-size: 1rem;
       font-style: normal;
       font-weight: 400;
       line-height: normal;
     }
-  }
-  .btn {
-    button {
-      background: #5d5fef;
+    .export {
+      display: flex;
+      align-items: center;
       height: 40px;
       min-width: 120px;
       padding: 0.625rem;
       padding: 0rem 1rem 0rem 1rem;
+      gap: 0.5rem;
+      border: 1px solid #5d5fef;
       color: #fff;
       font-size: 1rem;
       font-style: normal;
       font-weight: 400;
       line-height: normal;
+      background: #5d5fef;
     }
   }
 `;
